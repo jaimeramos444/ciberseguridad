@@ -1,0 +1,124 @@
+# Blue Sentinel – Laboratorio Blue Team
+
+## 1. Resumen del Proyecto
+
+**Nombre del proyecto:** Blue Sentinel  
+**Objetivo:** Laboratorio de Blue Team para centralizar logs, detectar incidentes y practicar threat hunting mediante Wazuh, Kibana y endpoints Windows/Linux.  
+
+**Resumen breve:**  
+> Mini-SOC funcional que permite generar eventos de prueba, monitorear alertas de seguridad, automatizar respuestas ante incidentes y practicar análisis de amenazas en un entorno controlado.
+
+---
+
+## 2. Topología del Laboratorio
+
+| VM | Sistema Operativo | Rol | CPU | RAM | Disco | Notas |
+|----|-----------------|-----|-----|-----|-------|-------|
+| Ubuntu Wazuh | Ubuntu 22.04 LTS | Manager + ELK + Kibana | 4 | 8–12 GB | 80–120 GB SSD | Mini-SOC central |
+| Windows 11 | Windows 11 Pro | Endpoint monitorizado | 4 | 8 GB | 120 GB SSD | Con Wazuh Agent instalado |
+| Linux opcional | Ubuntu/Debian | Endpoint monitorizado | 2 | 4 GB | 40 GB | Con Wazuh Agent instalado |
+
+**Captura simulada:**  
+![Diagrama de topología](ruta/a/tu/diagrama.png)
+
+---
+
+## 3. Herramientas Utilizadas
+
+| Herramienta | Función | Versión |
+|------------|--------|--------|
+| Wazuh | Monitorización y gestión de eventos | 4.x |
+| Elasticsearch | Almacenamiento de logs | 8.x |
+| Kibana | Dashboards y visualización | 8.x |
+| Ubuntu Server | Sistema base para manager | 22.04 LTS |
+| Windows 11 | Endpoint | 21H2 |
+| PowerShell / Python | Automatización de respuestas | Última versión compatible |
+
+---
+
+## 4. Configuración del Laboratorio
+
+**Ubuntu Wazuh (Manager):**  
+- Instalación de Wazuh Manager + ELK Stack  
+- Configuración de agentes  
+- Configuración de reglas y alertas  
+
+**Windows 11 (Endpoint):**  
+- Instalación de Wazuh Agent  
+- Configuración de logs y comunicación con el manager  
+- Generación de eventos de prueba (login fallidos, archivos sospechosos, cambios de permisos)  
+
+**Captura simulada del agente conectado:**  
+![Agente conectado](ruta/a/tu/captura_agente.png)
+
+---
+
+## 5. Dashboards y Alertas
+
+**Dashboards sugeridos:**  
+1. Login fallidos vs correctos  
+2. Archivos sospechosos detectados  
+3. Cambios en usuarios administrativos  
+
+**Captura simulada de dashboard:**  
+![Dashboard de alertas](ruta/a/tu/captura_dashboard.png)
+
+**Alertas configuradas:**  
+- Brute force detectado → notificación por email/Slack  
+- Archivos maliciosos → cuarentena automática  
+
+---
+
+## 6. Automatización de Respuesta (Mini SOAR)
+
+| Escenario | Acción automatizada | Script |
+|-----------|------------------|-------|
+| IP sospechosa tras 5 intentos fallidos | Bloquear en firewall | PowerShell |
+| Archivo EICAR detectado | Mover a cuarentena | PowerShell |
+| Cambio crítico de usuario | Notificación | Python / PowerShell |
+
+**Captura simulada de ejecución:**  
+![Script ejecutado](ruta/a/tu/captura_script.png)
+
+---
+
+## 7. Threat Hunting
+
+**Ejemplo de hallazgo:**  
+- IP 192.168.1.50 intentó logins fallidos múltiples veces  
+- Archivo sospechoso encontrado en `C:\Users\Public\Downloads`  
+- Usuario administrativo modificado sin registro previo  
+
+**Captura simulada de búsqueda en Kibana:**  
+![Threat Hunting](ruta/a/tu/captura_threathunting.png)
+
+**Documentación adicional:**  
+- Indicadores de compromiso (IoCs) detectados  
+- Patrones de comportamiento sospechoso  
+- Posibles respuestas a aplicar en entorno real  
+
+---
+
+## 8. Conclusiones y Aprendizajes
+
+- Habilidades demostradas:  
+  - Monitoreo de seguridad centralizado  
+  - Detección de incidentes y alertas  
+  - Automatización de respuestas ante amenazas  
+  - Threat hunting proactivo  
+- Experiencia práctica montando un mini-SOC en entorno controlado  
+- Posible extensión: agregar más endpoints, Linux o simulaciones de ataques más complejos  
+
+---
+
+## 9. Repositorio / Archivos Disponibles (Opcional)
+
+- Scripts PowerShell y Python para respuestas automáticas  
+- Configuraciones de Wazuh Manager y agentes  
+- Capturas y dashboards de Kibana  
+- Diagramas de topología  
+
+---
+
+*Nota:*  
+Rellena las rutas de las imágenes con tus capturas reales una vez tengas tu laboratorio montado. Puedes usar GitHub o un README.md para mostrar tu proyecto profesionalmente.
