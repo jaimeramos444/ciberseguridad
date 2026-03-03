@@ -1,0 +1,1 @@
+Laboratorio de Blue Team diseñado para simular un mini-SOC completo, centralizando logs de endpoints Windows y Linux mediante Wazuh, Elasticsearch y Kibana. Permite generar eventos de prueba, detectar incidentes, automatizar respuestas y practicar threat hunting, demostrando habilidades en monitoreo, análisis de amenazas y defensa proactiva.
